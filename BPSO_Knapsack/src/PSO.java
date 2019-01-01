@@ -24,7 +24,7 @@ public class PSO {
 
     }
 
-    public void run() {
+    public void solve() {
         Swarm swarm = new Swarm(PARTICLE_SIZE);
         particles = swarm.initializeSwarm(problem.dimension);
 
@@ -39,22 +39,28 @@ public class PSO {
                 swarm.particles[i].updateVelocity(swarm.gBestParticle, swarm.particles[i].pBestParticle);
                 swarm.particles[i].updatePosition();
 
-                FitnessEvoulator fitnessEvu = new FitnessEvoulator(swarm.particles[i]);
-                fitness = fitnessEvu.evulateFitness();
-
+                fitness = problem.getFitness(swarm.particles[i]);
                 swarm.particles[i].setFitness(fitness);
                 swarm.particles[i].updateBestParticle();
-
-               
             }
 
             swarm.updateGlobalBestParticle();
             iteration++;
             System.out.println(iteration + ". iteration     -     Globasl Best Value: " + swarm.gBestParticle.fitness);
-  
+
         }
+        
         for (int p : swarm.gBestParticle.position) {
-            System.out.print(p + " ");
+            System.out.print(p+ " ");
+        }
+        int index = 0;
+        System.out.println("\nÇantaya koyulacak item değerleri:");
+        for (int p : swarm.gBestParticle.position) {
+            if(p == 1){
+                System.out.print(problem.items[index].value + " - ");      
+            }
+            index++;
+            
 
         }
 

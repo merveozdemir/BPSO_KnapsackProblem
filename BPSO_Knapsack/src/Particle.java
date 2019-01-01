@@ -41,8 +41,7 @@ public class Particle {
 
         System.arraycopy(this.position, 0, pBestParticle.position, 0, numberofItems);
         System.arraycopy(this.velocity, 0, pBestParticle.velocity, 0, numberofItems);
-        FitnessEvoulator fitnessEvu = new FitnessEvoulator(this);
-        fitness = fitnessEvu.evulateFitness();
+        fitness = PSO.problem.getFitness(this);
         pBestParticle.fitness = this.fitness;
         
         System.out.println(Arrays.toString(this.position));

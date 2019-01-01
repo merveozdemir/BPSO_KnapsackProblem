@@ -11,11 +11,19 @@
 public class Test {
 
     public static void main(String[] args) {
-        double values[] = {15, 10, 9, 5, 8, 7, 12, 4, 6};
-        double weights[] = {1, 5, 3, 4, 2, 4, 7, 2, 4};
-        double maxCapacity = 12;
-        KnapsackProblem p = new KnapsackProblem(values.length, values, weights, maxCapacity);
-        PSO particalSwarmOptimisation = new PSO(20, p, 50);
-        particalSwarmOptimisation.run();
+        Item items[] = new Item[4];
+        double values[] = {15, 10, 9, 5};
+        double weights[] = {1, 5, 3, 4};
+        double maxCapacity = 8;
+
+        for (int i = 0; i < items.length; i++) {
+            Item item = new Item(values[i], weights[i]);
+            items[i] = item;
+          //  System.out.println(item);
+        }
+        
+        KnapsackProblem p = new KnapsackProblem(items.length, items, maxCapacity);
+        PSO psoForKnapsack = new PSO(20, p, 100);
+        psoForKnapsack.solve();
     }
 }

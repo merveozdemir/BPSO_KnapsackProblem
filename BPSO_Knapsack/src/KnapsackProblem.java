@@ -16,27 +16,31 @@ public class KnapsackProblem {
     double[] values;
     double[] weights;
     double maxCapacity;
+    Item items[];
 
-    public KnapsackProblem(int dimension, double[] values, double[] weights, double maxCapacity) {
+//    public KnapsackProblem(int dimension, double[] values, double[] weights, double maxCapacity) {
+//        this.dimension = dimension;
+//        this.maxCapacity = maxCapacity;
+//        this.values = values;
+//        this.weights = weights;
+//    }
+    KnapsackProblem(int dimension, Item[] items, double maxCapacity) {
+        this.items = items;
         this.dimension = dimension;
         this.maxCapacity = maxCapacity;
-        this.values = values;
-        this.weights = weights;
     }
 
-    double getResult(Particle p) {
-        return calculate(p);
+    double getFitness(Particle p) {
+        return solveProblem(p);
     }
 
-    double calculate(Particle particle) {
+    double solveProblem(Particle particle) {
         double fitnessResult = 0;
         double sumOfweights = 0;
         int x[] = particle.position;
         for (int i = 0; i < dimension; i++) {
-            fitnessResult += x[i] * values[i];
-
-            sumOfweights += x[i] * weights[i];
-
+            fitnessResult += x[i] * items[i].value;
+            sumOfweights += x[i] * items[i].weight;
         }
 //         System.out.println("fitness result: "+ fitnessResult);
 //         System.out.println("sum of weights: "+ sumOfweights);
@@ -47,4 +51,5 @@ public class KnapsackProblem {
 
         return fitnessResult;
     }
+
 }
