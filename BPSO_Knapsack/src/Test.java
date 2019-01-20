@@ -19,9 +19,9 @@ public class Test {
         for (int i = 0; i < items.length; i++) {
             Item item = new Item(values[i], weights[i]);
             items[i] = item;
-          //  System.out.println(item);
+            //  System.out.println(item);
         }
-        
+
         KnapsackProblem p = new KnapsackProblem(items.length, items, maxCapacity);
         PSO psoForKnapsack = new PSO(20, p, 100);
         psoForKnapsack.solve();
