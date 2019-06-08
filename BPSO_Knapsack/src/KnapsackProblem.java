@@ -18,12 +18,6 @@ public class KnapsackProblem {
     double maxCapacity;
     Item items[];
 
-//    public KnapsackProblem(int dimension, double[] values, double[] weights, double maxCapacity) {
-//        this.dimension = dimension;
-//        this.maxCapacity = maxCapacity;
-//        this.values = values;
-//        this.weights = weights;
-//    }
     KnapsackProblem(int dimension, Item[] items, double maxCapacity) {
         this.items = items;
         this.dimension = dimension;
@@ -42,13 +36,9 @@ public class KnapsackProblem {
             fitnessResult += x[i] * items[i].value;
             sumOfweights += x[i] * items[i].weight;
         }
-//         System.out.println("fitness result: "+ fitnessResult);
-//         System.out.println("sum of weights: "+ sumOfweights);
         if (sumOfweights > maxCapacity) {
             fitnessResult *= -1;
         }
-//        System.out.println("after max capacity : " + fitnessResult);
-
         return fitnessResult;
     }
 

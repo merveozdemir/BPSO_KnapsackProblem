@@ -44,8 +44,8 @@ public class Particle {
         fitness = PSO.problem.getFitness(this);
         pBestParticle.fitness = this.fitness;
         
-        System.out.println(Arrays.toString(this.position));
-        System.out.println("----------------------");
+        //System.out.println(Arrays.toString(this.position));
+        //System.out.println("----------------------");
     }
 
     public Particle(double fitness, int dimension) {
